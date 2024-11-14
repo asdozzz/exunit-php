@@ -2,12 +2,12 @@ variables:
   - id: APP_TITLE
     label: APP_TITLE
     type: string
-    defaultValue: "test"
+    defaultValue: "unitman"
 
 services:
   web:
     ports:
-      - port: 8082
+      - port: 8081
         type: 'http'
 
 prepare:
