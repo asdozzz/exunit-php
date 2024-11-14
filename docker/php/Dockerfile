@@ -10,6 +10,6 @@ RUN apt-get update && apt-get install -y \
     libzip-dev
 RUN docker-php-ext-install zip
 
-COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+COPY --from=docker.io/composer:latest /usr/bin/composer /usr/local/bin/composer
 
 WORKDIR /symfony
