@@ -9,6 +9,11 @@ services:
     ports:
       - port: 8081
         type: 'http'
+    cache:
+      - files:
+          - composer.lock
+        path:
+          - vendor
 
 prepare:
   - envsubst < .env.dist > .env.local
