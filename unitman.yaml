@@ -12,7 +12,7 @@ services:
     cache:
         files:
           - composer.lock
-        path:
+        paths:
           - vendor
 
 prepare:
