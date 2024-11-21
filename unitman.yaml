@@ -10,7 +10,7 @@ services:
       - port: 8081
         type: 'http'
     cache:
-      - files:
+        files:
           - composer.lock
         path:
           - vendor
