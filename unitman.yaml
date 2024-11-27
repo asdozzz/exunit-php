@@ -5,7 +5,7 @@ variables:
     defaultValue: "unitman"
 
 services:
-  web:
+  nginx:
     ports:
       - port: 8081
         type: 'http'
