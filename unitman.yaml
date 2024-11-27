@@ -10,6 +10,8 @@ services:
       - port: 8081
         type: 'http'
         uri: '/test'
+
+  php:
     cache:
         files:
           - composer.lock
