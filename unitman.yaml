@@ -9,7 +9,7 @@ services:
     ports:
       - port: 8081
         type: 'http'
-        uri: '/test'
+        startUri: '/test'
 
   php:
     cache:
