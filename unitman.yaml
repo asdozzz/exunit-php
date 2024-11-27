@@ -9,6 +9,7 @@ services:
     ports:
       - port: 8081
         type: 'http'
+        uri: '/test'
     cache:
         files:
           - composer.lock
