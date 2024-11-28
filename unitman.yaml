@@ -26,7 +26,6 @@ reset_prepare:
 
 up:
   - podman-compose up -d --build
-  - podman-compose exec php composer install
 
 down:
   - podman-compose down

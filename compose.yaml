@@ -2,16 +2,16 @@ services:
   nginx:
     build:
       context: ./docker/nginx
-    volumes:
-      - ./:/symfony
     restart: always
     ports:
       - "8081:80"
 
   php:
     build:
-      context: ./docker/php
+      context: ./
+      dockerfile: ./docker/php/Dockerfile
+    working_dir: /app
     volumes:
-      - ./:/symfony
+      - ${HOME}/./composer:/tmp/composer
     environment:
       APP_TITLE: ${UNITMAN_APP_TITLE:-defaultTitle}
