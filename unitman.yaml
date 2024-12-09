@@ -39,3 +39,29 @@ up:
 
 down:
   - podman-compose down
+
+actions:
+  - id: php-console
+    name: "php bin/console"
+    variables:
+      - id: BIN_CONSOLE
+        label: BIN_CONSOLE
+        type: string
+        defaultValue: "debug:router"
+    commands:
+      - podman-compose exec php php bin/console ${UNITMAN_ACTION_BIN_CONSOLE}
+  - id: podman-compose-logs
+    name: "podman-compose logs"
+    variables:
+      - id: SERVICE_NAME
+        label: SERVICE_NAME
+        type: collection
+        defaultValue: php
+        options:
+          - id: php
+            name: php
+
+          - id: nginx
+            name: nginx
+    commands:
+      - podman-compose logs ${UNITMAN_ACTION_SERVICE_NAME}
