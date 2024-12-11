@@ -19,6 +19,7 @@ variables:
     type: collection
     defaultValue: 2
     options:
+      options:
       - id: 1
         name: 1111
       - id: 2
@@ -68,6 +69,7 @@ actions:
         type: collection
         defaultValue: php
         options:
+          options:
             - id: php
               name: php
 
