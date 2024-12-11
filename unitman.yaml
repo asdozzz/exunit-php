@@ -14,6 +14,15 @@ variables:
     type: float
     defaultValue: 10.5
 
+  - id: COLLECTION_FIELD
+    label: COLLECTION_FIELD
+    type: collection
+    defaultValue: 2
+    options:
+      - id: 1
+        name: 1111
+      - id: 2
+        name: 2222
 
 services:
   nginx:
@@ -59,7 +68,6 @@ actions:
         type: collection
         defaultValue: php
         options:
-          options:
             - id: php
               name: php
 
