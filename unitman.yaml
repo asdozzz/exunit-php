@@ -47,7 +47,7 @@ reset_prepare:
 
 up:
   - podman-compose up -d --build
-  - chmod -R 777 var
+  - podman-compose exec php chmod -R 777 var
 
 down:
   - podman-compose down
