@@ -48,6 +48,7 @@ reset_prepare:
 up:
   - podman-compose up -d --build
   - podman-compose exec php mkdir -m 777 -p var
+  - podman-compose exec php composer install -n
 
 down:
   - podman-compose down

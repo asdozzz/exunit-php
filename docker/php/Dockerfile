@@ -14,17 +14,3 @@ RUN apt-get update && apt-get install -y \
 RUN docker-php-ext-install zip
 
 COPY --from=docker.io/composer:latest /usr/bin/composer /usr/local/bin/composer
-
-COPY composer.json composer.json
-COPY composer.lock composer.lock
-
-ENV COMPOSER_HOME=/tmp/composer
-ENV COMPOSER_ALLOW_SUPERUSER=1
-
-RUN --mount=type=bind,target=/app,rw \
-    --mount=type=cache,id=cache,target=$COMPOSER_HOME/cache \
-     composer install --classmap-authoritative && \
-    cp -r /app /build
-
-COPY . .
-RUN cp -r /build/vendor ./vendor

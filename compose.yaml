@@ -12,6 +12,6 @@ services:
       dockerfile: ./docker/php/Dockerfile
     working_dir: /app
     volumes:
-      - ${HOME}/./composer:/tmp/composer
+      - ./:/app
     environment:
       APP_TITLE: ${UNITMAN_APP_TITLE:-defaultTitle}

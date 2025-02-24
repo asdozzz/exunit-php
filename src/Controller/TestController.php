@@ -14,6 +14,6 @@ final class TestController extends AbstractController
     #[Route('/test', name: 'index')]
     function test()
     {
-        die("<pre>" . print_r('test22233 '.$this->appTitle, true) . "</pre>");
+        die("<pre>" . print_r('test22233999888 '.$this->appTitle, true) . "</pre>");
     }
 }
