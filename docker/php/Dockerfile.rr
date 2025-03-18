@@ -1,0 +1,19 @@
+FROM ghcr.io/roadrunner-server/roadrunner:2024.3.4 as roadrunner
+
+FROM spiralscout/php-grpc:8.1
+
+WORKDIR /app
+
+COPY --from=docker.io/composer:latest /usr/bin/composer /usr/local/bin/composer
+COPY --from=roadrunner /usr/bin/rr /usr/local/bin/rr
+
+COPY --chown=containeruser:groupcontainer composer.json ./
+RUN composer install --no-scripts --no-autoloader
+
+COPY --chown=containeruser:groupcontainer . .
+RUN composer dump-autoload --optimize && \
+    composer run-script post-install-cmd && \
+    composer check-platform-reqs && \
+    php bin/console cache:warmup
+
+CMD [ "rr", "serve","-c",".rr.yaml"]

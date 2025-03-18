@@ -1,0 +1,19 @@
+version: "3"
+
+server:
+  command: "php public/index.php"
+  relay: pipes
+  access_logs: true
+  env:
+    - APP_RUNTIME: Runtime\RoadRunnerSymfonyNyholm\Runtime
+
+rpc:
+  listen: tcp://127.0.0.1:6001
+
+http:
+  address: 0.0.0.0:8080
+  pool:
+    num_workers: ${RR_NUM_WORKERS:-5}
+    max_jobs: 100
+    supervisor:
+      max_worker_memory: 100

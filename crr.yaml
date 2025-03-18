@@ -1,19 +1,14 @@
 services:
-  nginx:
-    build:
-      context: ./docker/nginx
-    restart: always
-    ports:
-      - "8081:80"
-
   php:
     build:
       context: ./
-      dockerfile: ./docker/php/Dockerfile
+      dockerfile: ./docker/php/Dockerfile.rr
     working_dir: /app
     volumes:
       - ./:/app
     environment:
       APP_TITLE: ${UNITMAN_APP_TITLE:-defaultTitle}
+      RR_NUM_WORKERS: ${UNITMAN_INTEGER_FIELD:-3}
     ports:
-      - "8080:8080"
+      - "8081:8080"
+

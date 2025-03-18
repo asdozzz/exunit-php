@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 final class TestController extends AbstractController
@@ -14,6 +15,6 @@ final class TestController extends AbstractController
     #[Route('/test', name: 'index')]
     function test()
     {
-        die("<pre>" . print_r('test222339998886666 '.$this->appTitle, true) . "</pre>");
+        return new JsonResponse(['as' => 'test222339998886666 ']);
     }
 }
