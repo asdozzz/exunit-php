@@ -4,8 +4,6 @@ services:
       context: ./
       dockerfile: ./docker/php/Dockerfile.rr
     working_dir: /app
-    volumes:
-      - ./:/app
     environment:
       APP_TITLE: ${UNITMAN_APP_TITLE:-defaultTitle}
       RR_NUM_WORKERS: ${UNITMAN_INTEGER_FIELD:-3}
