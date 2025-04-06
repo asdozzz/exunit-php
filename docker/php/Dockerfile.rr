@@ -7,13 +7,9 @@ WORKDIR /app
 COPY --from=docker.io/composer:latest /usr/bin/composer /usr/local/bin/composer
 COPY --from=roadrunner /usr/bin/rr /usr/local/bin/rr
 
-COPY composer.json ./
+COPY . .
 RUN composer install --no-scripts --no-autoloader
 
-COPY . .
-RUN composer dump-autoload --optimize && \
-    composer run-script post-install-cmd && \
-    composer check-platform-reqs && \
-    php bin/console cache:warmup
+RUN php bin/console cache:warmup
 
 CMD [ "rr", "serve","-c",".rr.yaml"]
