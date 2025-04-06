@@ -1,6 +1,6 @@
 FROM ghcr.io/roadrunner-server/roadrunner:2024.3.4 as roadrunner
 
-FROM spiralscout/php-grpc:8.1
+FROM ghcr.io/spiralscout/php-grpc:8.1
 
 WORKDIR /app
 
