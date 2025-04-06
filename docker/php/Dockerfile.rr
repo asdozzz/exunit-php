@@ -7,10 +7,10 @@ WORKDIR /app
 COPY --from=docker.io/composer:latest /usr/bin/composer /usr/local/bin/composer
 COPY --from=roadrunner /usr/bin/rr /usr/local/bin/rr
 
-COPY --chown=containeruser:groupcontainer composer.json ./
+COPY composer.json ./
 RUN composer install --no-scripts --no-autoloader
 
-COPY --chown=containeruser:groupcontainer . .
+COPY . .
 RUN composer dump-autoload --optimize && \
     composer run-script post-install-cmd && \
     composer check-platform-reqs && \
