@@ -2,7 +2,7 @@ variables:
   - id: APP_TITLE
     label: APP_TITLE
     type: string
-    defaultValue: "unitman"
+    defaultValue: "unitman22"
 
   - id: INTEGER_FIELD
     label: INTEGER_FIELD
