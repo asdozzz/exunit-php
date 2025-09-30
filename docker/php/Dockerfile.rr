@@ -1,10 +1,10 @@
 FROM ghcr.io/roadrunner-server/roadrunner:2024.3.4 as roadrunner
 
-FROM docker.io/spiralscout/php-grpc:8.1
+FROM spiralscout/php-grpc:8.1
 
 WORKDIR /app
 
-COPY --from=docker.io/composer:latest /usr/bin/composer /usr/local/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 COPY --from=roadrunner /usr/bin/rr /usr/local/bin/rr
 
 COPY composer.json ./
