@@ -1,4 +1,4 @@
-FROM docker.io/nginx:1.17
+FROM nginx:1.17
 
 ADD ./default.conf /etc/nginx/conf.d/default.conf
 
