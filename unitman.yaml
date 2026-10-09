@@ -79,3 +79,4 @@ actions:
               name: nginx
     commands:
       - podman-compose logs ${UNITMAN_ACTION_SERVICE_NAME}
+    prepare: true
