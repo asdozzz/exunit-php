@@ -3,7 +3,7 @@ FROM php:8.0-fpm
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get dist-upgrade && apt-get update && apt-get install -y \
     git \
     zip \
     libpq-dev \
