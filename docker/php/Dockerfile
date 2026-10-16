@@ -5,7 +5,7 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y \
     git \
-    zip unzip \
+    zip \
     libpq-dev \
     wget \
     zlib1g-dev \
