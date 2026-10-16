@@ -2,6 +2,11 @@ services:
   nginx:
     build:
       context: ./docker/nginx
+      cache_from:
+        - type=registry,ref=http://unitman_registry/exunit-php/nginx:${UNITMAN_UNIT_NAME:-'latest'}
+        - type=registry,ref=http://unitman_registry/exunit-php/nginx:master
+      cache_to:
+        - type=registry,ref=http://unitman_registry/exunit-php/nginx:${UNITMAN_UNIT_NAME:-'latest'},mod=max
     restart: always
     ports:
       - "8081:80"
@@ -10,8 +15,14 @@ services:
     build:
       context: ./
       dockerfile: ./docker/php/Dockerfile
+      cache_from:
+        - type=registry,ref=http://unitman_registry/exunit-php/php:${UNITMAN_UNIT_NAME:-'latest'}
+        - type=registry,ref=http://unitman_registry/exunit-php/php:master
+      cache_to:
+        - type=registry,ref=http://unitman_registry/exunit-php/php:${UNITMAN_UNIT_NAME:-'latest'},mod=max
     working_dir: /app
     volumes:
       - ./:/app
     environment:
       APP_TITLE: ${UNITMAN_APP_TITLE:-defaultTitle}
+    
