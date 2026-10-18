@@ -16,7 +16,7 @@ services:
     build:
       context: ./
       dockerfile: ./docker/php/Dockerfile
-      ccache_from:
+      cache_from:
         - type=registry,ref=${UNITMAN_CACHE_REPO}/exunit-php/php:${UNITMAN_UNIT_NAME}
         - type=registry,ref=${UNITMAN_CACHE_REPO}/exunit-php/php:latest
       cache_to:
