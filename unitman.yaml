@@ -46,12 +46,12 @@ reset_prepare:
   - rm -rf .env.local
 
 up:
-  - podman-compose up -d --build
-  - podman-compose exec php mkdir -m 777 -p var
-  - podman-compose exec php composer install -n
+  - docker-compose up -d --build
+  - docker-compose exec php mkdir -m 777 -p var
+  - docker-compose exec php composer install -n
 
 down:
-  - podman-compose down
+  - docker-compose down
 
 actions:
   - id: php-console
@@ -62,8 +62,8 @@ actions:
         type: string
         defaultValue: "debug:router"
     commands:
-      - podman-compose exec php php bin/console ${UNITMAN_ACTION_BIN_CONSOLE}
-  - id: podman-compose-logs
+      - docker-compose exec php php bin/console ${UNITMAN_ACTION_BIN_CONSOLE}
+  - id: docker-compose-logs
     name: "podman-compose logs"
     variables:
       - id: SERVICE_NAME
@@ -78,5 +78,5 @@ actions:
             - id: nginx
               name: nginx
     commands:
-      - podman-compose logs ${UNITMAN_ACTION_SERVICE_NAME}
+      - docker-compose logs ${UNITMAN_ACTION_SERVICE_NAME}
     prepare: true
