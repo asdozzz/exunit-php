@@ -3,10 +3,11 @@ services:
     build:
       context: ./docker/nginx
       cache_from:
-        - type=registry,ref=http://unitman_registry/exunit-php/nginx:${UNITMAN_UNIT_NAME:-'latest'}
-        - type=registry,ref=http://unitman_registry/exunit-php/nginx:master
+        - type=registry,ref=${UNITMAN_CACHE_REPO}/exunit-php/nginx:${UNITMAN_UNIT_NAME}
+        - type=registry,ref=${UNITMAN_CACHE_REPO}/exunit-php/nginx:latest
       cache_to:
-        - type=registry,ref=http://unitman_registry/exunit-php/nginx:${UNITMAN_UNIT_NAME:-'latest'},mod=max
+        - type=registry,ref=${UNITMAN_CACHE_REPO}/exunit-php/nginx:${UNITMAN_UNIT_NAME},mode=max
+        - type=registry,ref=${UNITMAN_CACHE_REPO}/exunit-php/nginx:latest,mode=max
     restart: always
     ports:
       - "8081:80"
@@ -15,11 +16,12 @@ services:
     build:
       context: ./
       dockerfile: ./docker/php/Dockerfile
-      cache_from:
-        - type=registry,ref=http://unitman_registry/exunit-php/php:${UNITMAN_UNIT_NAME:-'latest'}
-        - type=registry,ref=http://unitman_registry/exunit-php/php:master
+      ccache_from:
+        - type=registry,ref=${UNITMAN_CACHE_REPO}/exunit-php/php:${UNITMAN_UNIT_NAME}
+        - type=registry,ref=${UNITMAN_CACHE_REPO}/exunit-php/php:latest
       cache_to:
-        - type=registry,ref=http://unitman_registry/exunit-php/php:${UNITMAN_UNIT_NAME:-'latest'},mod=max
+        - type=registry,ref=${UNITMAN_CACHE_REPO}/exunit-php/php:${UNITMAN_UNIT_NAME},mode=max
+        - type=registry,ref=${UNITMAN_CACHE_REPO}/exunit-php/php:latest,mode=max
     working_dir: /app
     volumes:
       - ./:/app
