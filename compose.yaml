@@ -25,6 +25,7 @@ services:
     working_dir: /app
     volumes:
       - ./:/app
+      - ./unitman_volumes/public_files/test.php:/app/public/test.php
     environment:
       APP_TITLE: ${UNITMAN_APP_TITLE:-defaultTitle}
     
