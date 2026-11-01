@@ -82,3 +82,7 @@ actions:
     commands:
       - docker-compose logs ${UNITMAN_ACTION_SERVICE_NAME}
     prepare: true
+
+unitman_volumes:
+  - dir: public_files
+    name: Файл для тестов
