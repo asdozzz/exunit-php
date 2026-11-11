@@ -62,8 +62,8 @@ actions:
         type: string
         defaultValue: "debug:router"
     commands:
-      - docker-compose exec php php bin/console ${UNITMAN_ACTION_BIN_CONSOLE}
-  - id: docker-compose-logs
+      - podman-compose exec php php bin/console ${UNITMAN_ACTION_BIN_CONSOLE}
+  - id: podman-compose-logs
     name: "podman-compose logs"
     variables:
       - id: SERVICE_NAME
@@ -78,7 +78,7 @@ actions:
             - id: nginx
               name: nginx
     commands:
-      - docker-compose logs ${UNITMAN_ACTION_SERVICE_NAME}
+      - podman-compose logs ${UNITMAN_ACTION_SERVICE_NAME}
     prepare: true
 
 unitman_volumes:
