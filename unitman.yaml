@@ -39,6 +39,9 @@ services:
         paths:
           - vendor
 
+build:
+  image: asdozzz/dind-unit:latest
+
 prepare:
   - envsubst < .env.dist > .env.local
 
